@@ -32,7 +32,7 @@
       padding: 0 20px;
     }
   }
-  
+
   .messages {
     background-color: #FAFAFA;
     box-sizing: border-box;
@@ -67,12 +67,13 @@
     background-color: #DDDDDD;
     box-sizing: border-box;
     height: 90px;
-    padding: 20px 50px 20px 40px;
+    padding: 20px 40px 20px 40px;
     &__message {
       border: none;
       float: left;
       height: 50px;
-      width: calc(100% - 150px);
+      padding-left: 10px;
+      width: calc(100% - 160px);
     }
     &__mask {
       background-color: $white;
