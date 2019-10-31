@@ -58,3 +58,6 @@ gem 'haml-rails'
 
 #font-awesomeの導入
 gem "font-awesome-rails"
+
+#deviseの導入
+gem 'devise'
