@@ -61,3 +61,7 @@ gem "font-awesome-rails"
 
 #deviseの導入
 gem 'devise'
+
+#Carrierwaveの導入
+gem 'carrierwave'
+gem 'mini_magick'
