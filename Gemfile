@@ -74,3 +74,4 @@ gem 'devise'
 #Carrierwaveの導入
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog-aws'
