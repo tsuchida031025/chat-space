@@ -1,3 +1,4 @@
+//$(document).on('turbolinks:load',function(){
 $(function(){
 
   function buildHTML(message){
@@ -16,8 +17,8 @@ $(function(){
           <p class="lower-message__content">
             ${message.content}
           </p>
-          ${Messageimage}
-          </div>
+        </div>
+        <img src=${Messageimage} >
       </div>`
     return (message.content || Messageimage) ? html : '';
   }
