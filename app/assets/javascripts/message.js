@@ -67,5 +67,5 @@ $(function(){
       });
     }
   };
-  setInterval(roloadMessages, 200000);
+  setInterval(roloadMessages, 5000);
 });
