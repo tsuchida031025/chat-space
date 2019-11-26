@@ -67,7 +67,6 @@ $(document).ready(function(){
       contentType: false
     })
     .done(function(message){
-      console.log(formData);
       console.log(message);
       var insertHTML = ``;
       insertHTML = buildHTML(message);
@@ -92,6 +91,7 @@ $(document).ready(function(){
       .done(function(messages) {
         var insertHTML = ``;
         messages.forEach(function (message) { 
+          console.log(message);
           insertHTML = buildHTML(message);
           $('.messages').append(insertHTML);
           $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
