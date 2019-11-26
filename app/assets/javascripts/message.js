@@ -67,10 +67,10 @@ $(document).ready(function(){
     })
     .done(function(message){
       var insertHTML = ``;
-      insertHTML = buildHTML(message)
+      insertHTML = buildHTML(message);
       $('.messages').append(insertHTML);
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');   
-      $('form')[0].reset();
+      $('.form')[0].reset();
       $('.form__submit').prop('disabled', false);
     })
     .fail(function(){
