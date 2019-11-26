@@ -1,54 +1,57 @@
 $(document).ready(function(){
-//$(function(){
-
   function buildHTML(message){
-    var Messageimage = (message.image)? (message.image) : "";
-    var html =
-      `<div class="message" data-message-id=${message.id}>
-        <div class="upper-message">
-          <div class="upper-message__user-name">
-            ${message.user_name}
+    if (message.content && message.image.url){
+      var html =
+        `<div class="message" data-message-id=${message.id}>
+          <div class="upper-message">
+            <div class="upper-message__user-name">
+              ${message.user_name}
+            </div>
+            <div class="upper-message__date">
+              ${message.created_at}
+            </div>
           </div>
-          <div class="upper-message__date">
-            ${message.created_at}
+          <div class="lower-message">
+            <p class="lower-message__content">
+              ${message.content}
+            </p>
+            <img src=${message.image.url}>
           </div>
-        </div>
-        <div class="lower-message">
-          <p class="lower-message__content">
-            ${message.content}
-          </p>
-        </div>
-        <img src=${Messageimage}>
-      </div>`
-      var htmlOnlyContent =
-      `<div class="message" data-message-id=${message.id}>
-        <div class="upper-message">
-          <div class="upper-message__user-name">
-            ${message.user_name}
+        </div>`
+    } else if (message.content){
+      var html =
+        `<div class="message" data-message-id=${message.id}>
+          <div class="upper-message">
+            <div class="upper-message__user-name">
+              ${message.user_name}
+            </div>
+            <div class="upper-message__date">
+              ${message.created_at}
+            </div>
           </div>
-          <div class="upper-message__date">
-            ${message.created_at}
+          <div class="lower-message">
+            <p class="lower-message__content">
+              ${message.content}
+            </p>
           </div>
-        </div>
-        <div class="lower-message">
-          <p class="lower-message__content">
-            ${message.content}
-          </p>
-        </div>
-      </div>`
-      var htmlOnlyImage =
-      `<div class="message" data-message-id=${message.id}>
-        <div class="upper-message">
-          <div class="upper-message__user-name">
-            ${message.user_name}
+        </div>`
+    } else if (message.image.url){
+      var html =
+        `<div class="message" data-message-id=${message.id}>
+          <div class="upper-message">
+            <div class="upper-message__user-name">
+              ${message.user_name}
+            </div>
+            <div class="upper-message__date">
+              ${message.created_at}
+            </div>
           </div>
-          <div class="upper-message__date">
-            ${message.created_at}
+          <div class="lower-message">
+            <img src=${message.image.url}>
           </div>
-        </div>
-        <img src=${Messageimage}>
-      </div>`
-    return (message.content && Messageimage) ? html : (message.content) ? htmlOnlyContent : (Messageimage) ? htmlOnlyImage : ``;
+        </div>`
+    }
+    return html;
   }
   $('.new_message').on('submit', function(e){
     e.preventDefault()
@@ -83,8 +86,10 @@ $(document).ready(function(){
         data: {id: last_message_id}
       })
       .done(function(messages) {
+        var insertHTML = ``;
         messages.forEach(function (message) { 
           insertHTML = buildHTML(message);
+          console.log(insertHTML);
           $('.messages').append(insertHTML);
           $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
         })
