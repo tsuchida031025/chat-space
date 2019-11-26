@@ -17,10 +17,10 @@ $(document).ready(function(){
           <p class="lower-message__content">
             ${message.content}
           </p>
+          ${Messageimage}
         </div>
-        <img src=${Messageimage} >
       </div>`
-    return (message.content || Messageimage) ? html : '';
+    return (message.content || Messageimage) ? html : "";
   }
   $('.new_message').on('submit', function(e){
     e.preventDefault()
