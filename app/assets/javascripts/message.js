@@ -66,7 +66,7 @@ $(document).ready(function(){
       contentType: false
     })
     .done(function(message){
-      var html = ``;
+      var insertHTML = ``;
       insertHTML = buildHTML(message)
       $('.messages').append(insertHTML);
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');   
