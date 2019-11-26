@@ -67,6 +67,8 @@ $(document).ready(function(){
       contentType: false
     })
     .done(function(message){
+      console.log(formData);
+      console.log(message);
       var insertHTML = ``;
       insertHTML = buildHTML(message);
       $('.messages').append(insertHTML);
