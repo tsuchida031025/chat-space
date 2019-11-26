@@ -1,6 +1,7 @@
 $(document).ready(function(){
   function buildHTML(message){
-    if (message.content && message.image.url){
+    var messageImageUrl = message.image ? message.image.url : null;
+    if (message.content && messageImageUrl){
       var html =
         `<div class="message" data-message-id=${message.id}>
           <div class="upper-message">
@@ -15,7 +16,7 @@ $(document).ready(function(){
             <p class="lower-message__content">
               ${message.content}
             </p>
-            <img src=${message.image.url}>
+            <img src=${messageImageUrl}>
           </div>
         </div>`
     } else if (message.content){
@@ -35,7 +36,7 @@ $(document).ready(function(){
             </p>
           </div>
         </div>`
-    } else if (message.image.url){
+    } else if (messageImageUrl){
       var html =
         `<div class="message" data-message-id=${message.id}>
           <div class="upper-message">
@@ -47,7 +48,7 @@ $(document).ready(function(){
             </div>
           </div>
           <div class="lower-message">
-            <img src=${message.image.url}>
+            <img src=${messageImageUrl}>
           </div>
         </div>`
     }
@@ -69,8 +70,8 @@ $(document).ready(function(){
       var insertHTML = ``;
       insertHTML = buildHTML(message);
       $('.messages').append(insertHTML);
-      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');   
-      $('.form')[0].reset();
+      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      $('form')[0].reset();
       $('.form__submit').prop('disabled', false);
     })
     .fail(function(){
